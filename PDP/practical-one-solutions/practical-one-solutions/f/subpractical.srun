@@ -1,0 +1,29 @@
+#!/bin/sh
+# Slurm job options (name, compute nodes, job time)
+#SBATCH --job-name=PDP_Practical
+#SBATCH --time=0:20:0
+#SBATCH --exclusive
+#SBATCH --nodes=1
+#SBATCH --tasks-per-node=36
+#SBATCH --cpus-per-task=1
+
+# We use the "standard" partition as we are running on CPU nodes
+#SBATCH --partition=standard
+# We use the "standard" QoS as our runtime is less than 4 days
+#SBATCH --qos=standard
+
+# Load the default HPE MPI environment
+module load mpt
+
+# Change to the submission directory
+cd $SLURM_SUBMIT_DIR
+
+# Set the number of threads to 1
+#   This prevents any threaded system libraries from automatically
+#   using threading.
+export OMP_NUM_THREADS=1
+
+# Launch the parallel job
+#   Using 144 MPI processes and 36 MPI processes per node
+#   srun picks up the distribution from the sbatch options
+srun ./blocking 128 1024 3e-3 0

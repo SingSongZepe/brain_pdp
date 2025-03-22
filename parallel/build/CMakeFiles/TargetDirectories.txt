@@ -1,0 +1,3 @@
+F:/MyProjects/receive/parallel_brain_model/parallel/build/CMakeFiles/main.dir
+F:/MyProjects/receive/parallel_brain_model/parallel/build/CMakeFiles/edit_cache.dir
+F:/MyProjects/receive/parallel_brain_model/parallel/build/CMakeFiles/rebuild_cache.dir

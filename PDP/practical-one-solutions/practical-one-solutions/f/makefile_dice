@@ -1,0 +1,15 @@
+LFLAGS=-lm
+CC=/lib64/mpich-3.2/bin/mpif90
+
+SRCS=$(wildcard *.F90)
+PROGS = $(patsubst %.F90,%,$(SRCS))
+
+all: $(PROGS)
+
+%: %.F90
+	$(CC) $(CFLAGS) -o $@ $< -Wtabs $(LFLAGS)
+
+clean: 
+	rm -f $(PROGS)
+
+.PHONY: all
